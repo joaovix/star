@@ -1264,7 +1264,7 @@ restaure_backup() {
 }
 msg_bem_vindo() {
     local msg
-    msg="✌️😃 Ola <b>${message_from_first_name[$id]}</b>\n\nSEJA BEM VINDO(a)\n\n"
+    msg="✌️😃 Olá <b>${message_from_first_name[$id]}</b>\n\nSEJA BEM VINDO(a)\n\n"
     msg+="Para acessar o menu\nclick ou execute [ /menu ]\n\n"
     msg+="Para obter informações\nclick ou execute [ /ajuda ]\n\n"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -1421,7 +1421,7 @@ del_rev() {
             return 0
         } || {
             ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                --text "$(echo -e ❌ REVENDEDEDOR NÃO EXISTE ❌)"
+                --text "$(echo -e ❌ REVENDEDOR NÃO EXISTE ❌)"
             return 0
         }
     } || {
@@ -1463,7 +1463,7 @@ del_rev() {
             return 0
         } || {
             ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                --text "$(echo -e ❌ REVENDEDEDOR NÃO EXISTE ❌)"
+                --text "$(echo -e ❌ REVENDEDOR NÃO EXISTE ❌)"
             return 0
         }
     }
@@ -1899,14 +1899,14 @@ while :; do
                     [[ "$_erro" == '1' ]] && break
                     [[ "$(awk -F : '$3 >= 1000 { print $1 }' /etc/passwd | grep -w ${message_text[$id]} | wc -l)" != '0' ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ Erro! USUÁRIO INVALIDO ❌\n\n⚠️ Informe Outro Nome..")" \
+                            --text "$(echo -e "❌ Erro! USUÁRIO INVÁLIDO ❌\n\n⚠️ Informe Outro Nome..")" \
                             --parse_mode html
                         >$CAD_ARQ
                         break
                     }
                     [ "${message_text[$id]}" == 'root' ] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ ERRO! USUÁRIO INVALIDO ❌\n\n⚠️ Informe Outro Nome..")" \
+                            --text "$(echo -e "❌ ERRO! USUÁRIO INVÁLIDO ❌\n\n⚠️ Informe Outro Nome..")" \
                             --parse_mode html
                         >$CAD_ARQ
                         break
@@ -1922,7 +1922,7 @@ while :; do
                     sizemax=$(echo -e ${#message_text[$id]})
                     [[ "$sizemax" -gt '10' ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ Erro !\n\nUse no maximo 8 caracteres\n[EX: crazy]")" \
+                            --text "$(echo -e "❌ Erro !\n\nUse no máximo 8 caracteres\n[EX: crazy]")" \
                             --parse_mode html
                         >$CAD_ARQ
                         break
@@ -2018,7 +2018,7 @@ while :; do
                             --text "$(echo -e "❌ Opção Inválida ❌\n\n⚠️ Utilize apenas letras [EX: sim ou não]")" \
                             --parse_mode html
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nIP: $(cat /etc/IP)\nUSUÁRIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
+                            --text "<b>✅ *CRIADO COM SUCESSO* ✅</b>\n\nIP: $(cat /etc/IP)\nUSUÁRIO: *<code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>*\nSENHA: *<code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>*\nCONEXÕES SIMULTÂNEAS: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: *$(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)*" \
                             --parse_mode html
                         break
                     }
@@ -2034,23 +2034,23 @@ while :; do
                             --text "$(echo -e "$msg_cli")" \
                             --parse_mode html
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text 'Informe o Numero do Arquivo:' \
+                            --text 'Informe o Número do Arquivo:' \
                             --reply_markup "$(ShellBot.ForceReply)"
                     } || {
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nIP: $(cat /etc/IP)\nUSUÁRIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
+                            --text "<b>✅ *CRIADO COM SUCESSO* ✅</b>\n\nIP: $(cat /etc/IP)\nUSUÁRIO: *<code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>*\nSENHA: *<code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>*\nCONEXÕES SIMULTÂNEAS: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: *$(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)*" \
                             --parse_mode html
                     }
                     ;;
-                'Informe o Numero do Arquivo:')
+                'Informe o Número do Arquivo:')
                     verifica_acesso
                     [[ "$_erro" == '1' ]] && break
                     [[ ${message_text[$id]} != ?(+|-)+([0-9]) ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ Opção Inválida ❌ \n\n⚠️ Utilize apenas numeros [EX: 1]")" \
+                            --text "$(echo -e "❌ Opção Inválida ❌ \n\n⚠️ Utilize apenas números [EX: 1]")" \
                             --parse_mode html
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nIP: $(cat /etc/IP)\nUSUÁRIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
+                            --text "<b>✅ *CRIADO COM SUCESSO* ✅</b>\n\nIP: $(cat /etc/IP)\nUSUÁRIO: *<code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>*\nSENHA: *<code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>*\nCONEXÕES SIMULTÂNEAS: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: *$(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)*" \
                             --parse_mode html
                         >$CAD_ARQ
                         break
@@ -2114,7 +2114,7 @@ while :; do
                     [[ "$_erro" == '1' ]] && break
                     [[ ${message_text[$id]} != ?(+|-)+([0-9]) ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ Erro ! \n\n⚠️ Utilize apenas numeros [EX: 1]")" \
+                            --text "$(echo -e "❌ Erro ! \n\n⚠️ Utilize apenas números [EX: 1]")" \
                             --parse_mode html
                         break
                     }
@@ -2151,7 +2151,7 @@ while :; do
                         --parse_mode html
                     rm /tmp/name-d >/dev/null 2>&1
                     ;;
-                '[1] - ADICIONAR ARQUIVO\n[2] - EXCLUIR ARQUIVO\n\nInforme a opcao [1-2]:')
+                '[1] - ADICIONAR ARQUIVO\n[2] - EXCLUIR ARQUIVO\n\nInforme a opção [1-2]:')
                     [[ ${message_text[$id]} != ?(+|-)+([0-9]) ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "$(echo -e "❌ Erro ! \n\n⚠️ Utilize apenas números [EX: 1 ou 2]")" \
@@ -2175,7 +2175,7 @@ while :; do
                                 --text "$(echo -e "$msg_cli1")" \
                                 --parse_mode html
                             ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                                --text "🗑Excluir Arquivo\nInforme o Numero do Arquivo:" \
+                                --text "🗑Excluir Arquivo\nInforme o Número do Arquivo:" \
                                 --reply_markup "$(ShellBot.ForceReply)"
                         } || {
                             ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -2196,7 +2196,7 @@ while :; do
                     echo $Opc1
                     [[ ${message_text[$id]} != ?(+|-)+([0-9]) ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ Erro ao Excluir arquivo ! \n\n⚠️ Utilize apenas numeros [EX: 1]")" \
+                            --text "$(echo -e "❌ Erro ao Excluir arquivo ! \n\n⚠️ Utilize apenas números [EX: 1]")" \
                             --parse_mode html
                         break
                     } || {
@@ -2378,7 +2378,7 @@ while :; do
                     _Var=$(sed -n '1 p' $CAD_ARQ | awk -F '@' {'print $2'})
                     [[ -z $_Var ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ User invalido")" \
+                            --text "$(echo -e "❌ User inválido")" \
                             --parse_mode html
                         break
                     }
@@ -2393,7 +2393,7 @@ while :; do
                     _Var1=$(sed -n '1 p' $CAD_ARQ | awk -F '@' {'print $2'})
                     [[ -z $_Var1 ]] && {
                         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                            --text "$(echo -e "❌ Nome invalido !")" \
+                            --text "$(echo -e "❌ Nome inválido !")" \
                             --parse_mode html
                         break
                     }
